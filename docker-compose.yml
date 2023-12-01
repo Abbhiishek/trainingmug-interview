@@ -1,0 +1,14 @@
+version: '1'
+services:
+  frontend:
+    image: 'frontend'
+    build:
+      context: .
+      dockerfile: dev.dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/app/src
+    environment:
+      WATCHPACK_POLLING: true
+      NODE_OPTIONS: --max-old-space-size=8192
