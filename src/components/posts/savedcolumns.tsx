@@ -27,10 +27,6 @@ export const savedcolumns: ColumnDef<Post>[] = [
         header: "Title",
     },
     {
-        accessorKey: "body",
-        header: "Body"
-    },
-    {
         header: "Action",
         id: "save",
         cell: ({ row }) => {

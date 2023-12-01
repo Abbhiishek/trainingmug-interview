@@ -22,7 +22,7 @@ const PostTable = () => {
     }, []);
 
     return (
-        <div className="container mx-auto py-10">
+        <div className="lg:container mx-auto lg:py-10 p-2">
             <DataTable columns={columns} data={posts} />
         </div>
     )
