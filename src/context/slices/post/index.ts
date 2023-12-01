@@ -10,7 +10,9 @@ export const SavedPostSlice = createSlice({
             const existingPost = state.find(post => post.id === action.payload.id);
             if (!existingPost) {
                 state.push(action.payload);
-                localStorage.setItem('savedPosts', JSON.stringify(state));
+                if (typeof window !== 'undefined') {
+                    localStorage.setItem('savedPosts', JSON.stringify(state));
+                }
                 toast({
                     title: "post saved",
                     description: "Post saved to your collection",
@@ -25,7 +27,9 @@ export const SavedPostSlice = createSlice({
             const index = state.findIndex((post) => post.id === action.payload.id);
             if (index !== -1) {
                 state.splice(index, 1);
-                localStorage.setItem('savedPosts', JSON.stringify(state));
+                if (typeof window !== 'undefined') {
+                    localStorage.setItem('savedPosts', JSON.stringify(state));
+                }
                 toast({
                     title: "post removed"
                 })
