@@ -4,12 +4,19 @@ import PictureSlice from "./slices/picture";
 import PostSlice from "./slices/post"
 
 
+// get the state from local storgae if the session was refreshed
+const preloadedState = {
+    picture: JSON.parse(localStorage.getItem('savedPictures') || '[]'),
+    post: JSON.parse(localStorage.getItem('savedPosts') || '[]'),
+};
+
 export const store = configureStore({
     reducer: {
         picture: PictureSlice,
         post: PostSlice,
 
     },
+    preloadedState,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

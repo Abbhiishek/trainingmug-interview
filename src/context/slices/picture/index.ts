@@ -10,6 +10,7 @@ export const SavedPictureSlice = createSlice({
             const existingPicture = state.find(picture => picture.id === action.payload.id);
             if (!existingPicture) {
                 state.push(action.payload);
+                localStorage.setItem('savedPictures', JSON.stringify(state));
                 toast({
                     title: "Picture saved",
                     description: "Picture saved to your collection",
@@ -25,6 +26,7 @@ export const SavedPictureSlice = createSlice({
             const index = state.findIndex((picture) => picture.id === action.payload.id);
             if (index !== -1) {
                 state.splice(index, 1);
+                localStorage.setItem('savedPictures', JSON.stringify(state));
                 toast({
                     title: "Picture Removed",
                     description: "Picture removed from your collection",
