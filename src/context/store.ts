@@ -6,8 +6,8 @@ import PostSlice from "./slices/post"
 
 // get the state from local storgae if the session was refreshed
 const preloadedState = {
-    picture: JSON.parse(localStorage.getItem('savedPictures') || '[]'),
-    post: JSON.parse(localStorage.getItem('savedPosts') || '[]'),
+    picture: JSON.parse(typeof window !== 'undefined' && localStorage.getItem('savedPictures') || '[]'),
+    post: JSON.parse(typeof window !== 'undefined' && localStorage.getItem('savedPosts') || '[]'),
 };
 
 export const store = configureStore({
